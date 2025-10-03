@@ -126,9 +126,12 @@ int main() {
 
 void headNode(Node *&head, float val){
     Node *newHead = new Node;
-    if (!head)  // if this is the first node, it's the new head
-        head = newHead;  
- 
+    if (!head){  // if this is the first node, it's the new head
+        head = newHead; 
+        newHead->next = nullptr;
+        newHead->value = val;
+        return; 
+    }
     newHead->value = val;
     newHead->next = head;
     head = newHead;
