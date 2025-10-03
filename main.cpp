@@ -137,7 +137,12 @@ int main() {
 //   and creates a new node and makes it the head of the LL
 // arguments: takes in the head Node of an LL and takes a
 //   float value to create a new head node to add to the LL
-void headNode(Node *&head, float val);
+void headNode(Node *&head, float val){
+    Node *newHead = new Node;
+    newHead->value = val;
+    newHead->next = head;
+
+}
 
 void tailNode(Node *&head, float val){
     Node *tail = new Node;
@@ -187,16 +192,14 @@ void insert(Node *&head, int place, float val){
 
     for (int i = 1; curr && i <= pos; i++) {
         prev = curr;
-        current = current->next;
+        curr = curr->next;
     }
 
     if (prev) {
         prev->next = n;
-        n->next = current;
-    } else { 
+        n->next = curr;
+    } else
         n->next = head;
-        head = n;
-    }
 
 }
 
