@@ -1,3 +1,6 @@
+// COMSC-210 | Lab 17 | Diksha Tara Natesan
+// IDE used: Vim/Terminal
+
 #include <iostream>
 using namespace std;
 
@@ -7,6 +10,15 @@ struct Node {
     float value;
     Node *next;
 };
+
+
+//function prototypes
+
+// headNode() takes the original head of the Linked List 
+//   and creates a new node and makes it the head of the LL
+// arguments: takes in the head Node of an LL and takes a 
+//   float value
+// returns: <describe returned object>
 
 void output(Node *);
 
