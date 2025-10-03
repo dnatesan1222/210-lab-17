@@ -32,12 +32,15 @@ void tailNode(Node *&head, float val);
 //   int value to know what to delete from the LL
 void delete(Node *&head, int place);
 
-// headNode() takes the head of the Linked List and
+// insert() takes the head of the Linked List and
 //   creates a new node and adds it to the specified place in the LL
 // arguments: takes in the head Node of an LL and takes a
 //   float value to create a new node and place where node is added to LL
 void insert(Node *&head, int place, float val);
 
+// deleteLL() takes the head of the Linked List and deletes the entire LL
+// arguments: takes in the head Node of an LL to know what to delete
+void deleteLL(Node *&head);
 
 void output(Node *);
 
@@ -128,6 +131,59 @@ int main() {
     output(head);
 
     return 0;
+}
+
+// headNode() takes the original head of the Linked List
+//   and creates a new node and makes it the head of the LL
+// arguments: takes in the head Node of an LL and takes a
+//   float value to create a new head node to add to the LL
+void headNode(Node *&head, float val);
+
+// tailNode() takes the head of the Linked List and
+//   creates a new node and makes it the tail of the LL
+// arguments: takes in the head Node of an LL and takes a
+//   float value to create a new node to add to the LL as a tail
+void tailNode(Node *&head, float val);
+
+// delete() takes the head of the Linked List and a position in the LL
+//   where the Node should be deleted
+// arguments: takes in the head Node of an LL and takes an
+//   int value to know what to delete from the LL
+void delete(Node *&head, int place);
+
+// insert() takes the head of the Linked List and
+//   creates a new node and adds it to the specified place in the LL
+// arguments: takes in the head Node of an LL and takes a
+//   float value to create a new node and place where node is added to LL
+void insert(Node *&head, int place, float val){
+    Node *n = new Node;
+    n->value = val;
+    Node *curr = head;
+    Node *prev = nullptr;
+
+    for (int i = 1; curr && i <= pos; i++) {
+        prev = curr;
+        current = current->next;
+    }
+
+    if (prev) {
+        prev->next = n;
+        n->next = current;
+    } else { 
+        n->next = head;
+        head = n;
+    }
+
+}
+
+void deleteLL(Node *&head){
+    Node *curr = head;
+    while(curr){
+        Node *tmp = curr;
+        curr = curr->next;  //traverse thru entire LL
+        delete temp;
+    }
+    head = nullptr;
 }
 
 void output(Node * hd) {
