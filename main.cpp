@@ -52,13 +52,10 @@ int main() {
     for (int i = 0; i < SIZE; i++) {
         int tmp_val = rand() % 100;
         Node *newVal = new Node;
-        
+         
         // adds node at head
         if (!head) { // if this is the first node, it's the new head
-            head = newVal;
-            newVal->next = nullptr;
-            newVal->value = tmp_val;
-        }
+            headNode(head, tmp_val)
         else { // its a second or subsequent node; place at the head
             newVal->next = head;
             newVal->value = tmp_val;
@@ -133,14 +130,14 @@ int main() {
     return 0;
 }
 
-// headNode() takes the original head of the Linked List
-//   and creates a new node and makes it the head of the LL
-// arguments: takes in the head Node of an LL and takes a
-//   float value to create a new head node to add to the LL
 void headNode(Node *&head, float val){
     Node *newHead = new Node;
+    if (!head)  // if this is the first node, it's the new head
+        head = newHead;  
+ 
     newHead->value = val;
     newHead->next = head;
+    head = newHead;
 
 }
 
@@ -198,9 +195,10 @@ void insert(Node *&head, int place, float val){
     if (prev) {
         prev->next = n;
         n->next = curr;
-    } else
+    } else{
         n->next = head;
-
+        head = n;
+    }
 }
 
 void deleteLL(Node *&head){
