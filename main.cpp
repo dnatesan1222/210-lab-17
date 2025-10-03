@@ -26,11 +26,11 @@ void headNode(Node *&head, float val);
 //   float value to create a new node to add to the LL as a tail
 void tailNode(Node *&head, float val);
 
-// delete() takes the head of the Linked List and a position in the LL
+// deleteNode() takes the head of the Linked List and a position in the LL
 //   where the Node should be deleted
 // arguments: takes in the head Node of an LL and takes an
 //   int value to know what to delete from the LL
-void delete(Node *&head, int place);
+void deleteNode(Node *&head, int place);
 
 // insert() takes the head of the Linked List and
 //   creates a new node and adds it to the specified place in the LL
@@ -54,13 +54,7 @@ int main() {
         Node *newVal = new Node;
          
         // adds node at head
-        if (!head) { // if this is the first node, it's the new head
-            headNode(head, tmp_val)
-        else { // its a second or subsequent node; place at the head
-            newVal->next = head;
-            newVal->value = tmp_val;
-            head = newVal;
-        }
+        headNode(head, tmp_val);
     }
     output(head);
 
@@ -158,17 +152,17 @@ void tailNode(Node *&head, float val){
 
 }
 
-void delete(Node *&head, int place){
+void deleteNode(Node *&head, int place){
     Node *curr = head;
     
-    if (pos == 1) { // delete head case
+    if (place == 1) { // delete head case
         head = head->next;
         delete curr;
         return;
     }
 
     Node *prev = nullptr; //for traversing through list to save prev node to change its pointer to skip the node we want to delete    
-    for (int i = 1; curr && i < pos; i++) {
+    for (int i = 1; curr && i < place; i++) {
         prev = curr;
         curr = curr->next;
     }
@@ -187,7 +181,7 @@ void insert(Node *&head, int place, float val){
     Node *curr = head;
     Node *prev = nullptr;
 
-    for (int i = 1; curr && i <= pos; i++) {
+    for (int i = 1; curr && i <= place; i++) {
         prev = curr;
         curr = curr->next;
     }
@@ -204,7 +198,7 @@ void insert(Node *&head, int place, float val){
 void deleteLL(Node *&head){
     Node *curr = head;
     while(curr){
-        Node *tmp = curr;
+        Node *temp = curr;
         curr = curr->next;  //traverse thru entire LL
         delete temp;
     }
