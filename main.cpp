@@ -149,12 +149,28 @@ void tailNode(Node *&head, float val);
 //   where the Node should be deleted
 // arguments: takes in the head Node of an LL and takes an
 //   int value to know what to delete from the LL
-void delete(Node *&head, int place);
+void delete(Node *&head, int place){
+    Node *curr = head;
+    if (pos == 1) { // delete head case
+        head = head->next;
+        delete curr;
+        return;
+    }
 
-// insert() takes the head of the Linked List and
-//   creates a new node and adds it to the specified place in the LL
-// arguments: takes in the head Node of an LL and takes a
-//   float value to create a new node and place where node is added to LL
+    Node *prev = nullptr; //for traversing through list to save prev node to change its pointer to skip the node we want to delete    
+    for (int i = 1; curr && i < pos; i++) {
+        prev = curr;
+        curr = curr->next;
+    }
+
+    if (curr) {
+        prev->next = curr->next;
+        delete curr; //deletes the node
+    }
+
+
+}
+
 void insert(Node *&head, int place, float val){
     Node *n = new Node;
     n->value = val;
