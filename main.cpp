@@ -84,6 +84,13 @@ int main() {
 
     insert(head, entry, 10000);
     output(head);
+
+    //testing tailNode()
+    cout << "Integer value to be added as the tail Node --> ";
+    cin >> entry;
+    
+    tailNode(head, entry);
+    output(head);
     
     cout << "Deleting Linked List..." << endl;
     // deleting the linked list
